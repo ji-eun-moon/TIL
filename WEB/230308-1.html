@@ -1,0 +1,63 @@
+<!-- box positioning -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box positioning</title>
+</head>
+<body>
+    <div class="big-box">
+        <div class="small-box" id="red"></div>
+        <div class="small-box" id="gold"></div>
+        <div class="small-box" id="green"></div>
+        <div class="small-box" id="blue"></div>
+        <div class="small-box" id="pink"></div>
+    </div>
+<style>
+    .big-box{
+        position: relative;
+        margin: 100px auto 500px;
+        border: 5px solid black;
+        width: 500px;
+        height: 500px;
+    }
+    .small-box{
+        width: 100px;
+        height: 100px;
+    }
+    #red {
+        background-color: red;
+        position: absolute;
+        top: 400px;
+        left: 400px;
+    }
+    #gold {
+        background-color: gold;
+        position: fixed;
+        right: 50px;
+        bottom: 50px;
+    }
+    #green {
+        background-color: green;
+        position: absolute;
+        top: 200px;
+        left: 200px;
+    }
+    #blue {
+        background-color: blue;
+        position: relative;
+        top: 100px;
+        left: 100px;
+    }
+    #pink {
+        background-color: pink;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+</style>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>데일리실습 1-2</title>
+    <style>
+        #hphk > p:nth-child(2) {
+            color: blue;
+          }
+        #hphk > p:nth-of-type(2) {
+            color: blue;
+          }
+    </style>
+</head>
+<body>
+    <div id="hphk">
+        <h2>어떻게 선택 될까?</h2>
+        <p>첫번째 단락</p> <!--nth-child(2)-->
+        <p>두번째 단락</p> <!--nth-of-type(2)-->
+        <p>세번째 단락</p>
+        <p>네번째 단락</p>
+      </div>
+</body>
+</html>
+
+<!--
+    nth-child는 태그 종류에 상관 없이 형제 순서대로 선택하므로
+    #hphk > p:nth-child(2)은 hphk의 두번째 형제인 <p>첫번째 단락</p> 선택
+    
+    nth-oftype은 태그끼리 형제 관계를 만들고 그 안에서 순서대로 선택하므로
+    #hphk > p:nth-of-type(2)은 hphk 안의 p 중에서 두번째 형제인 <p>두번째 단락</p> 선택
+
+-->
