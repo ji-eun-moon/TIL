@@ -7,19 +7,26 @@
   <title>Document</title>
 </head>
 <style>
-    /* 자식 결합자 */
-    div > p {
-        color: crimson;
-    }
+
     /* 자손 결합자 */
+    /* 해당 요소의 하위 요소 중에서 특정 타입의 요소 모두 선택 */
     div p {
         color: blue;
     }
+    /* 자식 결합자 */
+    /* 해당 요소의 바로 밑에 존재하는 하위 요소 중에서 특정 타입의 요소 모두 선택 */
+    div > p {
+        color: crimson;
+    }
+    
     
 </style>
 <body>
     <div>
         <p>자식</p>
+        <span>
+            <p>&nbsp; &nbsp; &nbsp; &nbsp; 손자</p>
+        </span>
         <p>자식</p>
     </div>
 </body>
