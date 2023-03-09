@@ -1,0 +1,36 @@
+<!-- Float (2) -->
+<!--
+    Float를 사용하면 내가 원하는 방향으로 box 쌓을 수 있음 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float (2)</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box1 left"></div>
+        <div class="box1 box2 left"></div>
+    </div>
+</body>
+<style>
+    .box1 {
+        width: 100px;
+        height: 100px;
+        background-color: orangered;
+        border: 1px solid black;
+    }
+    .box2 {
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+    }
+
+    .left {
+        float: left;
+    }
+</style>
+</html>

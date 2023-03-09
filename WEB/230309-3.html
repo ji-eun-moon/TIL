@@ -1,0 +1,50 @@
+<!-- layout -->
+<!--
+    clear : float 속성이 적용된 이후 나타나는 요소들이 float 속성에 영향 받지 않도록 설정
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout</title>
+</head>
+<body>
+    <div class="container">
+        <div class = "header"></div>
+        <div class = "section-left left"></div>
+        <div class = "section-right left"></div>
+        <div class = "footer"></div>
+    </div>
+</body>
+<style>
+    .header {
+        height: 100px;
+        background-color: rosybrown;
+    }
+
+    .section-left {
+        height: 500px;
+        background-color: bisque;
+        width: 30%;
+    }
+
+    .section-right {
+        height: 500px;
+        background-color: skyblue;
+        width: 70%;
+    }
+
+    .footer {
+        height: 100px;
+        background-color: darkgray;
+        clear: both;
+    }
+
+    .left {
+        float: left;
+    }
+
+</style>
+</html>

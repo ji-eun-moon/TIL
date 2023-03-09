@@ -1,0 +1,103 @@
+<!-- navigation bar 연습 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BESPOKE 김치플러스 | Samsung 대한민국</title>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="'#" class ="logo">SAMSUNG</a>
+            <nav class="gnb-left">
+                <ul>
+                    <li><a href="#">제품</a></li>
+                    <li><a href="#">기획전</a></li>
+                    <li><a href="#">큐커 식품관</a></li>
+                    <li><a href="#">스토리</a></li>
+                </ul>
+            </nav>
+            <div class="gnb-right">
+                <ul>
+                    <li><a href="#">검색</a></li>
+                    <li><a href="#">장바구니</a></li>
+                    <li><a href="#">마이페이지</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</body>
+<style>
+    * {
+      padding: 0;
+      margin: 0;
+      border-style: border-box;  
+    }
+
+    ol, ul, li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #header {
+        border-bottom: 1px solid #ebebeb;
+    }
+
+    .wrapper {
+        min-width: 1440px;
+        height: 80px;
+        padding: 0 24px;
+    }
+
+    .logo {
+        float: left;
+        height: 100%;
+        line-height: 80px;
+        margin-right: 2vw;
+    }
+
+    .gnb-left {
+        float: left;
+        height: 100%;
+    }
+
+    .gnb-right {
+        float: right;
+        height: 100%;
+    }
+
+    .gnb-left > ul > li {
+        float: left;
+        line-height: 80px;
+    }
+
+    .gnb-left > ul > li > a {
+        padding: 6px 12px;
+    }
+
+    .gnb-right > ul > li {
+        float: left;
+        line-height: 80px;
+    }
+
+    .gnb-right > ul > li > a {
+        padding: 6px 12px;
+    }
+
+    .gnb-left > ul > li > a:hover {
+        color:white;
+        background-color: black;
+        border-radius: 20px;
+    }
+    .gnb-left > ul > li > a:focus {
+        border-radius: 20px;
+        outline: 2px dotted skyblue;
+    }
+</style>
+</html>
