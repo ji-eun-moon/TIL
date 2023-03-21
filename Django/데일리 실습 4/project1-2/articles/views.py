@@ -17,7 +17,7 @@ def create(request):
     article = Article(title=title, content=content)
     article.save()
 
-    return render(request, 'articles/create.html')
+    return redirect('articles:index')
 
 def detail(request, pk):
     article = Article.objects.get(pk=pk)
