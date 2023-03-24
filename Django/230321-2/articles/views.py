@@ -43,5 +43,5 @@ def update(request, pk):
             return redirect('articles:detail', pk=article.pk)
     else:
         form = ArticleForm(instance=article)
-    context = {'form': form}
+    context = {'form': form, 'article': article}
     return render(request, 'articles/update.html', context)
