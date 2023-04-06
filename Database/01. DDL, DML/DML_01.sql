@@ -7,13 +7,12 @@ CREATE TABLE users (
     balance INTEGER NOT NULL
 );
 
+
 -- 모든 데이터 조회하기
 SELECT * FROM users;
 
-SELECT * FROM users limit 20;
-
--- 이름, 나이 20개 조회하기
-SELECT first_name, age FROM users limit 20;
+-- 이름, 나이 조회하기
+SELECT first_name, age FROM users;
 
 -- rowid, first_name 조회하기
 SELECT rowid, first_name FROM users;
