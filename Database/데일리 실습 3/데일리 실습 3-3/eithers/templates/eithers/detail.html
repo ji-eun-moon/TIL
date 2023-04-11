@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>DETAIL</h1>
+<hr>
+<h2>{{ question.title }}</h2>
+<div>
+    <h5>Red TEAM</h5>
+    <h4>=> {{ question.issue_a }}</h4>
+    <br>
+    <h5>Blue TEAM</h5>
+    <h4>=> {{ question.issue_b }}</h4>
+  </div>
+<hr>
+<a href="{% url 'eithers:index' %}">BACK</a>
+<hr>
+<h3>댓글 작성</h3>
+<form action="{% url 'eithers:comment_create' question.pk %}" method="post">
+  {% csrf_token %}
+  {{ comment_form.as_p }}
+  <button type="submit">작성</button>
+</form>
+<hr>
+
+<h3>댓글 목록</h3>
+{% for comment in comments %}
+  {% if comment.pick %}
+    <p>Blue - {{ comment.content }}</p>
+    {% else %}
+    <p>Red - {{ comment.content }}</p>
+  {% endif %}
+{% endfor %}
+
+{% endblock  %}
