@@ -69,6 +69,11 @@ def update(request, pk):
             form = ArticleForm(request.POST, instance=article)
             if form.is_valid():
                 form.save()
+                article.hashtags.clear()  # 기존에 있던 hashtag 삭제
+                for word in article.content.split():
+                    if word.startswith('#'):
+                        hashtag, created = Hashtag.objects.get_or_create(content=word)
+                        article.hashtags.add(hashtag)
                 return redirect('articles:detail', article.pk)
         else:
             form = ArticleForm(instance=article)
