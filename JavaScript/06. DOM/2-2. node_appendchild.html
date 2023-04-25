@@ -18,7 +18,10 @@
   </ul>
 
   <script>
-    
+    // 이미 문서에 존재하는 Node를 다른 Node의 자식으로 삽입하는 경우 위치를 이동
+    const fruitsList = document.querySelector('#fruits')
+    const banana = document.querySelector('#banana')
+    fruitsList.appendChild(banana)
   </script>
 </body>
 </html>

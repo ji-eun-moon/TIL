@@ -38,7 +38,13 @@
     })
     console.log(tom)
 
-    // 4. 모든 사용자들의 계좌잔액을 totalBalance 상수에 할당하기
+    // 4. map 메서드를 활용해 모든 사용자에게 isAlive 키를 추가하고 true로 설정한 뒤, newUsers 상수에 할당
+    const newUsers = users.map((user) => {
+        return {...user, isAlive: true}
+    })
+    console.log(newUsers)
+    
+    // 5. 모든 사용자들의 계좌잔액을 totalBalance 상수에 할당하기
     const totalBalance = users.reduce((total, user) => total + user.balance, 0)
     console.log(totalBalance)
     

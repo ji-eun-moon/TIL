@@ -52,33 +52,33 @@
     parent.insertBefore(kiwi, banana)
 
     // class가 'red'인 노드 모두 삭제
-    // const reds = document.querySelectorAll('.red')
+    const reds = document.querySelectorAll('.red')
 
-    // reds.forEach(element => {
-    //   element.remove()
-    // });
+    reds.forEach(element => {
+      element.remove()
+    });
 
     // 모든 li 태그의 글자 크기를 키워보세요.
-    // const liTags = document.querySelectorAll('li')
+    const liTags = document.querySelectorAll('li')
 
-    // liTags.forEach(element => {
-    //   element.classList.add('big')
-    // });
+    liTags.forEach(element => {
+      element.classList.add('big')
+    });
 
-    // 버튼을 누르면 이벤트 실행하기 (4일차 내용 맛보기)
-    const button = document.querySelector('#event-button')
+    // 버튼을 누르면 이벤트 실행하기
+    // const button = document.querySelector('#event-button')
 
-    button.addEventListener('click', () => {
-      changeFont()
-    })
+    // button.addEventListener('click', () => {
+    //   changeFont()
+    // })
 
-    function changeFont() {
-      const LiTags = document.querySelectorAll('li')
+    // function changeFont() {
+    //   const LiTags = document.querySelectorAll('li')
 
-      LiTags.forEach(element => {
-        element.classList.add('big')
-      })
-    }
+    //   LiTags.forEach(element => {
+    //     element.classList.add('big')
+    //   })
+    // }
 
 
   </script>
