@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        const h1Tag = document.createElement('h1')
+        h1Tag.innerText = '오늘의 Todo'
+        document.body.appendChild(h1Tag)
+
+        const ulTag = document.createElement('ul')
+        document.body.appendChild(ulTag)
+
+        const todoList = ['양치하기', '공부하기', '휴식하기']
+        for (const todo of todoList) {
+            const liTag = document.createElement('li')
+            liTag.innerText = todo
+            ulTag.appendChild(liTag)
+        }
+
+    </script>
+</body>
+</html>

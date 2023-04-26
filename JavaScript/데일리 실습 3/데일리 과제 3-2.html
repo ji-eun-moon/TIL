@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 이곳에 코드를 작성합니다.
+
+    // aTag 생성
+    const aTag = document.createElement('a')
+    document.body.appendChild(aTag)
+    aTag.innerText = 'SSAFY'
+    aTag.setAttribute('href', 'https://www.ssafy.com/')
+    
+    // aTag의 기본 동작 중단
+    aTag.addEventListener('click', function(){
+        event.preventDefault()
+    })
+
+  </script>
+</body>
+</html>
