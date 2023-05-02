@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h3>Increase number</h3>
+    <p>{{ number }}</p>
+    <button @click="number++">+</button>
+    <hr>
+
+    <h3>Change name</h3>
+    <p>{{ name }}</p>
+    <input type="text" v-model="name">
+    <hr>
+
+    <h3>push myObj</h3>
+    <p>{{ myObj }}</p>
+    <button @click="itemChange">change Item</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        number: 0,
+        name: '',
+        myObj: {completed: true}
+      },
+      methods: {
+        nameChange: function () {
+          console.log('name is changed')
+        },
+
+        itemChange: function () {
+          this.myObj.completed = !this.myObj.completed  // myObj.completed 속성의 값을 반전
+        }
+      },
+      watch: {
+        number: function (val, oldVal) {
+          console.log(val, oldVal)  // number 값이 변경될 때마다 새 값과 이전 값이 콘솔에 출력
+        },
+
+        name: {
+          handler: 'nameChange'  // name 값이 변경될 때 nameChange() 메서드가 호출
+        },
+
+        myObj: {
+          handler: function (val) {  // myObj 객체의 값이 변경될 때마다 호출
+            console.log(val)  // 변경된 myObj 객체가 콘솔에 출력
+          },
+          deep: true  // 객체의 속성까지 감시
+        }, 
+      }
+    })
+  </script>
+</body>
+</html>
