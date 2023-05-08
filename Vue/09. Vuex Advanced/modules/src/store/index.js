@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+import myModule from './modules/myModule'
 
 Vue.use(Vuex)
 
@@ -10,7 +11,6 @@ export default new Vuex.Store({
   ],
   state: {
     message: 'message in state',
-    age: 30
   },
   getters: {
     messageLength(state) {
@@ -36,5 +36,6 @@ export default new Vuex.Store({
     },
   },
   modules: {
+    myModule
   }
 })

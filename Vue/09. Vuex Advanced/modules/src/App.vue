@@ -2,12 +2,13 @@
   <div id="app">
     <h1>길이 {{ messageLength }}의 메시지 {{ message }}를 입력받음</h1>
     <h3>x2 : {{ doubleLength }}</h3>
-    <h1>{{ age }}</h1>
     <!-- mapActions 배열 형태로 매핑 -->
     <!-- <input type="text" @keyup.enter="changeMessage(inputData)" v-model="inputData"> -->
-
     <!-- mapActions 객체 형태로 매핑 -->
     <input type="text" @keyup.enter="onSubmit" v-model="inputData">
+
+    <h1>{{ age }}</h1>
+    <button @click="upage">age up</button>
     
   </div>
 </template>
@@ -28,11 +29,12 @@ export default {
 
     // 둘 다 사용 가능!
     // mapState - 배열 형태로 매핑
-    ...mapState(['age']),
+    // ...mapState(['age']),
 
     // mapState - 객체 형태로 매핑
     ...mapState({
-      msg: state => state.message
+      msg: state => state.message,
+      age: state => state.myModule.age,
     }),
 
     // mapGetters 매핑
@@ -51,13 +53,17 @@ export default {
 
     // mapActions - 객체 형태로 매핑
     ...mapActions({
-      actionsChangeMessage: 'changeMessage'
+      actionsChangeMessage: 'changeMessage',
+      upage: 'incrementAge'
     }),
     onSubmit() {
       const newMessage = this.inputData
       this.actionsChangeMessage(newMessage)
       this.inputData = null
-    }
+    },
+    // upage() {
+    //   this.$store.dispatch('incrementAge')
+    // }
   },
 }
 </script>
