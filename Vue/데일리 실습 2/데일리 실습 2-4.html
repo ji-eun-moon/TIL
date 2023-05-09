@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .completed {
+      text-decoration: line-through;
+      color: grey;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Todo List</h1>
+        <select v-model="status">
+            <option value="all">전체</option>
+            <option value="inProgress">진행중</option>
+            <option value="completed">완료</option>
+        </select>
+        <input type="text" v-model="content">
+        <button @click="addTodo">+</button>
+        <ul>
+            <li v-for="todo in todoListByStatus" :key="todo.date">
+                <!-- todo.completed가 true이면 체크박스가 채크상태로 렌더링 -->
+                <input type="checkbox" @click="toggleTodo(todo)" :checked="todo.completed">
+                <span :class="{completed : todo.completed}">{{ todo.content }}</span>
+            </li>
+        </ul>
+        <button @click="deleteTodo">완료 목록 삭제</button>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const STORAGE_KEY = 'vue-todo-app'
+        const todoStorage = {
+        // 데이터 불러오기
+        fetch: function () {
+            // 로컬 스토리지에서 STORAGE_KEY를 가진 데이터 가져오기
+            // 데이터가 없다면 null 대신 빈 배열 반환
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []
+        },
+        // 로컬 스토리지에 데이터 저장
+        save: function (todos) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
+        },
+        }
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                content: '',
+                todoList: todoStorage.fetch(),
+                status: 'all',
+            },
+            methods: {
+                addTodo(event) {
+                    if (this.content === '') {
+                        alert('내용을 입력해 주세요!')
+                        return
+                    }
+                    const todo = {
+                        content: this.content,
+                        completed: false,
+                        date: new Date().getTime(),
+                    }
+                    this.todoList.push(todo)
+                    this.content = ''
+                },
+                deleteTodo() {
+                    this.todoList = this.todoList.filter((todo) => !todo.completed)
+                },
+                toggleTodo(todo) {
+                    todo.completed = !todo.completed
+                }
+            },
+            // 상태 선택 상자를 통해 전체, 진행중, 완료된 할일만 필터링 함
+            computed: {
+                todoListByStatus: function () {
+                    return this.todoList.filter(todo => {
+                        if (this.status === 'inProgress') {
+                            return !todo.completed
+                        }
+                        if (this.status === 'completed') {
+                            return todo.completed
+                        }
+                        if (this.status === 'all'){
+                            return true
+                        }
+                    })
+                }
+            },
+            // todoList에 요소가 변경될 때마다 로컬 스토리지에 저장
+            watch: {
+                todoList: {
+                    deep: true,
+                    handler: function (todoList) {
+                        todoStorage.save(todoList)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
