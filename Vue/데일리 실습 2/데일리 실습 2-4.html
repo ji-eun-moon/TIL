@@ -24,7 +24,7 @@
         <button @click="addTodo">+</button>
         <ul>
             <li v-for="todo in todoListByStatus" :key="todo.date">
-                <!-- todo.completed가 true이면 체크박스가 채크상태로 렌더링 -->
+                <!-- todo.completed가 true이면 체크박스가 체크상태로 렌더링 -->
                 <input type="checkbox" @click="toggleTodo(todo)" :checked="todo.completed">
                 <span :class="{completed : todo.completed}">{{ todo.content }}</span>
             </li>
