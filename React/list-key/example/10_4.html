@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+
+        const numbers = [1, 2, 3, 4, 5];
+
+        // 숫자가 키값
+        const listItems = numbers.map((number) =>
+            <li key={number.toString()}>
+                {number}
+            </li>
+        );
+        
+        // id가 키값
+        const todoItems = todos.map((todo) => {
+            <li key={todo.id}>
+                {todo.text}
+            </li>
+        });
+
+        // index가 키값
+        const todoItems2 = todos.map((todo, index) => {
+            <li key={index}>
+                {todo.text}
+            </li>
+        });
+
+        ReactDOM.render(
+            <ul>{listItems}</ul>,
+            document.getElementById('root')
+        );
+    </script>
+</html>
