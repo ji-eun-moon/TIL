@@ -7,12 +7,23 @@ import reportWebVitals from './reportWebVitals';
 // example
 import NameForm from './example/NameForm';
 import RequestForm from './example/RequestForm';
+import FruitSelect from './example/FruitSelect';
+import Reservation from './example/Reservation';
+
+// practice
+import SignUp from './chapter_11/SignUp';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+
     <NameForm />
     <RequestForm />
+    <FruitSelect />
+    <Reservation />
+
+    <SignUp />
   </React.StrictMode>
 );
 
