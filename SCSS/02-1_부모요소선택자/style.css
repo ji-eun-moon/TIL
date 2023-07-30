@@ -1,0 +1,20 @@
+.btn-outer {
+  width: 300px;
+}
+.btn-outer .btn {
+  display: block;
+  text-transform: uppercase;
+  color: yellowgreen;
+  text-align: center;
+  transition: 0.5s;
+  width: 300px;
+  height: 50px;
+}
+.btn-outer .btn::before, .btn-outer .btn::after {
+  content: "";
+  width: inherit;
+  height: inherit;
+}
+.btn-outer .btn:hover {
+  background-color: crimson;
+}

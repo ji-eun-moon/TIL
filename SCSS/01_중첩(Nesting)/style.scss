@@ -19,3 +19,24 @@ body {
     }
   }
 }
+
+// 중첩 벗어나기
+.frame {
+  padding: 20px;
+  margin: auto;
+  @at-root .heading {
+    font-size: 42px;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+}
+
+// 속성 단축형
+.portfolio {
+  text: {
+    align: center;
+    overflow: hidden;
+    transform: uppercase;
+    shadow: 2px 2px 20px yellowgreen;
+  }
+}

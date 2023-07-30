@@ -1,0 +1,14 @@
+.frame {
+	margin: 15px;
+	.btn {
+		padding: 10px;
+		text-align: center;
+		width: 100px;
+		&.confirm {
+			background-color: yellowgreen;
+		}
+		&.warning {
+			background-color: crimson;
+		}
+	}
+}
