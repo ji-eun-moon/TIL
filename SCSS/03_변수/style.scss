@@ -1,0 +1,106 @@
+$primary: royalblue;
+$confirm: yellowgreen;
+$danger: crimson;
+$btn-padding: 10px 30px;
+
+.btns {
+  text-align: center;
+  .btn {
+    border: none;
+    text-transform: capitalize;
+    font-size: 15px;
+    padding: $btn-padding;
+    border-radius: 3px;
+    color: #fff;
+  }
+  .primary {
+    background-color: $primary;
+  }
+  .confirm {
+    background-color: $confirm;
+  }
+  .danger {
+    background-color: $danger;
+  }
+}
+
+// 변수 사용 예시
+$heading-color: #000;
+$sub-heading-color: #555;
+$body-color: #222;
+$heading-padding: 10px;
+
+body {
+  color: $body-color;
+}
+
+.items h1 {
+  color: $heading-color;
+  padding: $heading-padding
+}
+
+.items h2 {
+  color: $sub-heading-color;
+}
+
+.news h1 {
+  color: $heading-color;
+  padding: $heading-padding;
+}
+
+.news h2 {
+  color: $sub-heading-color;
+}
+
+$color-primary: #222;
+$color-secondary: #333;
+$bgc-item: #eee;
+$portfolio-item-w: 300px;
+$portfolio-item-h: 300px;
+$portfolio-images-url: "images/portfolio/";
+
+.portfolio {
+  padding: 20px;
+  .portfolio-items {
+    width: 1200px;
+    margin: auto;
+    .portfolio-item {
+      border: 1px solid #000;
+      width: $portfolio-item-w;
+      height: $portfolio-item-h;
+      background: $bgc-item url($portfolio-images-url + "bg-01.jpg");
+    }
+  }
+}
+
+// 변수에 변수 할당 가능
+$crimson: crimson;
+$black: #202020;
+
+$color-primary: $crimson;
+$color-secondary: $black;
+
+// 전역 변수
+$crimson: crimson;
+$black: #202020;
+.portfolio {
+  color: $crimson;
+  h1 {
+    color: $black;
+  }
+}
+
+// 지역 변수
+.portfolio {
+  $crimson: crimson;
+  $black: #202020;
+  h1 {
+    color: $black;
+  }
+}
+
+$bgc-color: red;
+
+.frame {
+  background-color: $bgc-color;
+}
