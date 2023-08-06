@@ -1,0 +1,78 @@
+@mixin heading {
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+  span {
+    color: royalblue;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    background-color: chocolate;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.heading {
+  @include heading;
+}
+
+.frame {
+  @include heading;
+}
+
+// import 하기
+@import './mixin.scss';
+
+body {
+  @include default;
+}
+
+// mixin, include 혼합
+@mixin notice-button {
+  font-size: 15px;
+  width: 120px;
+  padding: 7px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.complete {
+  @include notice-button;
+  border: 1px solid royalblue;
+  color: royalblue;
+}
+.loading{
+  @include notice-button;
+  border: 1px solid green;
+  color: green;
+}
+.error {
+  @include notice-button;
+  border: 1px solid red;
+  color: red;
+}
+
+// 매개변수 사용
+@mixin border-style($width, $style, $color){
+  border: $width $style $color;
+}
+
+.buttons {
+  button {
+    width: 200px;
+    padding: 7px;
+    background-color: #fff;
+    font-size: 18px;
+    &.approval {
+      @include border-style(1px, solid , crimson)
+    }
+    &.refuse {
+      @include border-style(1px, dashed , royalblue)
+    }
+  }
+}

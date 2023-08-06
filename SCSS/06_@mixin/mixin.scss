@@ -1,0 +1,11 @@
+@mixin default {
+    font-size: 15px;
+    margin: 0;
+    color: #333;
+    background-color: #fff;
+    list-style: 1.6em;
+}
+
+body {
+    @include default;
+}

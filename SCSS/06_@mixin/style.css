@@ -1,0 +1,96 @@
+.heading {
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+}
+.heading span {
+  color: royalblue;
+}
+.heading::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background-color: chocolate;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.frame {
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+}
+.frame span {
+  color: royalblue;
+}
+.frame::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background-color: chocolate;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+body {
+  font-size: 15px;
+  margin: 0;
+  color: #333;
+  background-color: #fff;
+  list-style: 1.6em;
+}
+
+body {
+  font-size: 15px;
+  margin: 0;
+  color: #333;
+  background-color: #fff;
+  list-style: 1.6em;
+}
+
+.complete {
+  font-size: 15px;
+  width: 120px;
+  padding: 7px;
+  background-color: #fff;
+  cursor: pointer;
+  border: 1px solid royalblue;
+  color: royalblue;
+}
+
+.loading {
+  font-size: 15px;
+  width: 120px;
+  padding: 7px;
+  background-color: #fff;
+  cursor: pointer;
+  border: 1px solid green;
+  color: green;
+}
+
+.error {
+  font-size: 15px;
+  width: 120px;
+  padding: 7px;
+  background-color: #fff;
+  cursor: pointer;
+  border: 1px solid red;
+  color: red;
+}
+
+.buttons button {
+  width: 200px;
+  padding: 7px;
+  background-color: #fff;
+  font-size: 18px;
+}
+.buttons button.approval {
+  border: 1px solid crimson;
+}
+.buttons button.refuse {
+  border: 1px dashed royalblue;
+}
