@@ -1,0 +1,26 @@
+.checkout, .add, .order {
+  width: 200px;
+  padding: 7px;
+  background-color: #fff;
+  font-size: 18px;
+  text-transform: capitalize;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.order {
+  background-color: purple;
+  color: #fff;
+}
+
+.add {
+  background-color: yellowgreen;
+  color: #fff;
+}
+
+.checkout {
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #000;
+}

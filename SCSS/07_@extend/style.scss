@@ -1,0 +1,29 @@
+%btn {
+    width: 200px;
+    padding: 7px;
+    background-color: #fff;
+    font-size: 18px;
+    text-transform: capitalize;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.order {
+    @extend %btn;
+    background-color: purple;
+    color: #fff;
+}
+
+.add {
+    @extend %btn;
+    background-color: yellowgreen;
+    color: #fff;
+}
+
+.checkout {
+    @extend %btn;
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #000;
+}
