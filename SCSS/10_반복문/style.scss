@@ -1,0 +1,20 @@
+.frame div {
+    border: 3px solid black;
+    margin: 5px;
+    padding: 5px;
+}
+
+@for $i from 1 through 9 {
+    .frame div:nth-child(#{$i}) {
+        width: 50px * $i;
+    }
+}
+
+$size: 30px, 60px, 90px, 120px;
+
+@each $size in $size {
+    .img-#{$size} {
+        width: $size;
+        height: $size;
+    }
+}
