@@ -1,0 +1,42 @@
+// 속성 추가
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	@content;
+}
+
+.box {
+	@include border-radius(10px) {
+			border-style: dotted;
+	}
+}
+
+// 선택자, 속성 전달
+@mixin sample {
+	@content;
+}
+
+@include sample {
+	.add {
+		color: crimson;
+	}
+}
+
+// 부모요소에 자식 요소 구조 형태로 선택자와 속성을 함께 컨텐츠 블록으로 전달하는 경우
+@mixin sample {
+	.frame {
+		border: 1px solid black;
+		width: 200px;
+		height: 200px;
+		@content;
+	}
+}
+
+@include sample {
+	.add {
+		color: crimson;
+		background-color: yellowgreen;
+		&:hover {
+			color: royalblue;
+		}
+	}
+}

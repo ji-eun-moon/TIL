@@ -1,0 +1,21 @@
+.box {
+  border-radius: 10px;
+  border-style: dotted;
+}
+
+.add {
+  color: crimson;
+}
+
+.frame {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+}
+.frame .add {
+  color: crimson;
+  background-color: yellowgreen;
+}
+.frame .add:hover {
+  color: royalblue;
+}
