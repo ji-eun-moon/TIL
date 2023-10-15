@@ -1,5 +1,7 @@
 import { GetStaticProps, NextPage, NextPageContext } from 'next'  // 타입을 위해 도입
 import Head from 'next/head'  // Next.js의 내장 컴포넌트
+import Link from 'next/link';
+import { useRouter } from 'next/router'
 
 // 페이지 컴포넌트의 props 타입 정의
 type SSGProps = {
@@ -16,6 +18,19 @@ type SSGProps = {
 
 const SSG: NextPage<SSGProps> = (props) => {
     const { message } = props;
+    const router = useRouter()
+
+    const handleClick = () => {
+        router.push({ 
+            pathname: '/ssr', 
+            query: { 
+                keyword: 'hello' 
+            },
+        },
+        '/ssr'
+        );
+      };
+
     return (
         <div>
             {/* Head 컴포넌트로 감싸면, 그 요소는 <head> 태그에 배치됨 */}
@@ -26,6 +41,15 @@ const SSG: NextPage<SSGProps> = (props) => {
                     이 페이지는 정적 사이트 생성을 통해 빌드 시 생성된 페이지입니다.
                 </p>
                 <p>{message}</p>
+                {/* /ssr 로 이동하기 위한 링크 작성 */}
+                <Link href={{
+                    pathname: '/ssr',
+                    query: { keyword: 'hello' },
+                }}
+                as="/ssr">
+                    Go to SSR
+                </Link>
+                <button onClick={handleClick}>hello</button>
             </main>
         </div>
     );
