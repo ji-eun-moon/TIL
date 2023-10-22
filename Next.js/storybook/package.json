@@ -1,5 +1,5 @@
 {
-  "name": "my-first-next-app",
+  "name": "front-end",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,19 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db": "json-server --watch db.json --port 3001",
+    "format": "prettier --check ./src",
+    "format:fix": "prettier --write ./src",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@types/node": "20.7.1",
-    "@types/react": "18.2.23",
-    "@types/react-dom": "18.2.8",
+    "@material-tailwind/react": "^2.1.4",
+    "@types/node": "20.8.7",
+    "@types/react": "18.2.31",
+    "@types/react-dom": "18.2.14",
     "autoprefixer": "10.4.16",
-    "eslint": "8.50.0",
-    "eslint-config-next": "13.5.3",
-    "json-server": "^0.17.4",
-    "next": "13.5.3",
+    "axios": "^1.5.1",
+    "eslint-config-next": "13.5.6",
+    "next": "13.5.6",
     "postcss": "8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -27,6 +28,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@storybook/addon-controls": "^7.5.1",
     "@storybook/addon-essentials": "^7.5.1",
     "@storybook/addon-interactions": "^7.5.1",
     "@storybook/addon-links": "^7.5.1",
@@ -35,7 +37,17 @@
     "@storybook/nextjs": "^7.5.1",
     "@storybook/react": "^7.5.1",
     "@storybook/testing-library": "^0.2.2",
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.15",
+    "prettier": "^3.0.3",
     "sb": "^7.5.1",
     "storybook": "^7.5.1"
   }
