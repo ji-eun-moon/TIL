@@ -1,0 +1,19 @@
+{
+    "posts" : [
+        {
+            "title": "게시물 1",
+            "content": "hello world!",
+            "id": 1
+        },
+        {
+            "title": "게시물 2",
+            "content": "hello world!",
+            "id": 2
+        },
+        {
+            "title": "게시물 3",
+            "content": "hello world!",
+            "id": 3
+        }
+    ]
+}
