@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react';
 import '../src/styles/globals.css';
+import * as NextImage from 'next/image';
 
 const preview: Preview = {
   parameters: {
@@ -11,6 +12,10 @@ const preview: Preview = {
       },
     },
   },
+};
+
+NextImage.default.defaultProps = {
+  unoptimized: true,
 };
 
 export default preview;

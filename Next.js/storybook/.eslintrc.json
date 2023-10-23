@@ -24,6 +24,8 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "no-console": "off", // 추가
+    "react/function-component-definition": "off", // 추가
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
     "import/no-extraneous-dependencies": [

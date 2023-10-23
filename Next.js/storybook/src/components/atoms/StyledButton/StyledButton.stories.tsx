@@ -6,16 +6,21 @@ import StyledButton from '.';
 export default {
   // 그룹명
   title: 'stories/Button',
+  // 자동으로 문서 생성
+  tags: ['autodocs'],
   // 사용하는 컴포넌트
   component: StyledButton,
   argTypes: {
-    backgroundColor: { control: 'text' },
+    backgroundColor: {
+      description: '버튼의 배경색을 지정합니다.',
+    },
+    label: {
+      description: '버튼에 표시되는 레이블을 지정합니다.',
+    },
   },
 } as ComponentMeta<typeof StyledButton>;
 
-const Template: ComponentStory<typeof StyledButton> = function Template(args) {
-  return <StyledButton {...args} />;
-};
+const Template: ComponentStory<typeof StyledButton> = (args) => <StyledButton {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
