@@ -2,18 +2,43 @@
   "posts": [
     {
       "title": "게시물 1",
-      "content": "hello world!",
-      "id": 1
+      "content": "게시물 1 내용",
+      "postId": 1
     },
     {
       "title": "게시물 2",
-      "content": "hello world!",
-      "id": 2
+      "content": "게시물 2 내용",
+      "postId": 2
     },
     {
       "title": "게시물 3",
-      "content": "hello world!",
-      "id": 3
+      "content": "게시물 3 내용",
+      "postId": 3
+    },
+    {
+      "title": "게시물 4",
+      "content": "게시물 4 내용",
+      "postId": 4
+    },
+    {
+      "title": "게시물 5",
+      "content": "게시물 5 내용",
+      "postId": 5
+    },
+    {
+      "title": "게시물 6",
+      "content": "게시물 6 내용",
+      "postId": 6
+    },
+    {
+      "title": "게시물 7",
+      "content": "게시물 7 내용",
+      "postId": 7
+    },
+    {
+      "title": "게시물 8",
+      "content": "게시물 8 내용",
+      "postId": 8
     }
   ]
 }

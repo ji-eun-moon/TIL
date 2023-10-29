@@ -7,14 +7,13 @@ type SSGProps = {
   posts: IPost[];
 };
 
-// PostList 컴포넌트 정의
-const PostList: NextPage<SSGProps> = ({ posts }: SSGProps) => (
+const SSGPostList: NextPage<SSGProps> = ({ posts }: SSGProps) => (
   <div>
     <h1 className="font-bold text-lg">게시물 목록</h1>
     <ul>
       {posts.map((post) => (
-        <Link href={`/post/${post.id}`}>
-          <li key={post.id}>{post.title}</li>
+        <Link href={`/posts/${post.postId}`}>
+          <li key={post.postId}>{post.title}</li>
         </Link>
       ))}
     </ul>
@@ -25,7 +24,8 @@ export const getStaticProps: GetStaticProps<SSGProps> = async () => {
   const posts = await getPosts();
   return {
     props: { posts },
+    revalidate: 60,
   };
 };
 
-export default PostList;
+export default SSGPostList;
