@@ -6,6 +6,7 @@ function test() {
   return (
     <div>
       <Image src="/images/test.png" alt="dog image" width={500} height={500} />
+      <p className="font-bold">글씨가 잘 나오나요?</p>
       <StyledButton label="버튼 테스트" />
     </div>
   );
