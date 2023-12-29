@@ -16,6 +16,12 @@
   }
 }
 
+@layer base {
+  h1 {
+    @apply font-extrabold text-2xl mb-3;
+  }
+}
+
 body {
   padding: 1rem;
 }
