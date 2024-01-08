@@ -17,6 +17,7 @@
 // }
 
 import { NextRequest, NextResponse } from "next/server";
+import schema from "../schema";
 
 export function GET(
   request: NextRequest,
@@ -44,13 +45,15 @@ export async function PUT(
 ) {
   const body = await request.json();
 
-  if (!body.name) {
-    return NextResponse.json({ error: "Name is Required" }, { status: 404 });
+  const validation = schema.safeParse(body);
+
+  if (!validation.success) {
+    return NextResponse.json(validation.error.errors, { status: 404 });
   }
 
   const userData = [
-    { id: 1, name: "Jieun" },
-    { id: 2, name: "Hansol" },
+    { id: 1, name: "Jieun", email: "jieun@email.com", age: 29 },
+    { id: 2, name: "Hansol", email: "hansol@email.com", age: 27 },
   ];
 
   const requestedId = parseInt(params.id);
@@ -61,7 +64,12 @@ export async function PUT(
     return NextResponse.json({ error: "USER NOT FOUND" }, { status: 404 });
   }
 
-  return NextResponse.json({ id: requestedId, name: body.name });
+  return NextResponse.json({
+    id: requestedId,
+    name: body.name,
+    email: body.email,
+    age: body.age,
+  });
 }
 
 export async function DELETE(
