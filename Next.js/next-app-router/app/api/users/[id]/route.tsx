@@ -37,3 +37,49 @@ export function GET(
 
   return NextResponse.json(user);
 }
+
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const body = await request.json();
+
+  if (!body.name) {
+    return NextResponse.json({ error: "Name is Required" }, { status: 404 });
+  }
+
+  const userData = [
+    { id: 1, name: "Jieun" },
+    { id: 2, name: "Hansol" },
+  ];
+
+  const requestedId = parseInt(params.id);
+
+  const user = userData.find((user) => user.id === requestedId);
+
+  if (!user) {
+    return NextResponse.json({ error: "USER NOT FOUND" }, { status: 404 });
+  }
+
+  return NextResponse.json({ id: requestedId, name: body.name });
+}
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const userData = [
+    { id: 1, name: "Jieun" },
+    { id: 2, name: "Hansol" },
+  ];
+
+  const requestedId = parseInt(params.id);
+
+  const user = userData.find((user) => user.id === requestedId);
+
+  if (!user) {
+    return NextResponse.json({ error: "USER NOT FOUND" }, { status: 404 });
+  }
+
+  return NextResponse.json({});
+}
