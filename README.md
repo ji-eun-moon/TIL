@@ -1,6 +1,37 @@
-# TIL (Today I Learned)
-- [Python](https://github.com/ji-eun-moon/TIL/tree/master/PYTHON)
-- [Java](https://github.com/ji-eun-moon/TIL/tree/master/Java)
-- [JavaScript](https://github.com/ji-eun-moon/TIL/tree/master/JavaScript)
-- [TypeScript](https://github.com/ji-eun-moon/TIL/tree/master/TypeScript)
-- [HTML, CSS](https://github.com/ji-eun-moon/TIL/tree/master/WEB)
+# TIL
+
+| Today I Learned
+
+## Programming Languages
+
+|            | 주요 학습 내용 | 링크 |
+| ---------- | -------------- | ---- |
+| Java       |                |      |
+| Python     |                |      |
+| JavaScript |                |      |
+| TypeScript |                |      |
+
+## Frontend
+
+|           | 주요 학습 내용 | 링크 |
+| --------- | -------------- | ---- |
+| Web       |                |      |
+| Vue       |                |      |
+| React     |                |      |
+| Next.js   |                |      |
+| PWA       |                |      |
+| SCSS      |                |      |
+| storybook |                |      |
+
+## Backend
+
+|          | 주요 학습 내용 | 링크 |
+| -------- | -------------- | ---- |
+| Database |                |      |
+| Django   |                |      |
+
+## ETC
+
+|           | 주요 학습 내용 | 링크 |
+| --------- | -------------- | ---- |
+| Algorithm |                |      |
