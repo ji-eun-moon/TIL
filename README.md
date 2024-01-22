@@ -19,6 +19,8 @@
 | Vue       |                |      |
 | React     |                |      |
 | Next.js   |                |      |
+| Redux     |                |      |
+| Zustand   |                |      |
 | PWA       |                |      |
 | SCSS      |                |      |
 | storybook |                |      |
