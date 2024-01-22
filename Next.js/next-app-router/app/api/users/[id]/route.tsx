@@ -17,20 +17,18 @@
 // }
 
 import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/prisma/client";
 import schema from "../schema";
 
-export function GET(
+export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const userData = [
-    { id: 1, name: "Jieun" },
-    { id: 2, name: "Hansol" },
-  ];
-
   const requestedId = parseInt(params.id);
 
-  const user = userData.find((user) => user.id === requestedId);
+  const user = await prisma.user.findUnique({
+    where: { id: requestedId },
+  });
 
   if (!user) {
     return NextResponse.json({ error: "USER NOT FOUND" }, { status: 404 });
@@ -51,43 +49,39 @@ export async function PUT(
     return NextResponse.json(validation.error.errors, { status: 404 });
   }
 
-  const userData = [
-    { id: 1, name: "Jieun", email: "jieun@email.com", age: 29 },
-    { id: 2, name: "Hansol", email: "hansol@email.com", age: 27 },
-  ];
-
   const requestedId = parseInt(params.id);
 
-  const user = userData.find((user) => user.id === requestedId);
+  const user = await prisma.user.findUnique({
+    where: { id: requestedId },
+  });
 
   if (!user) {
     return NextResponse.json({ error: "USER NOT FOUND" }, { status: 404 });
   }
 
-  return NextResponse.json({
-    id: requestedId,
-    name: body.name,
-    email: body.email,
-    age: body.age,
+  const uadatedUser = await prisma.user.update({
+    where: { id: requestedId },
+    data: { name: body.name, email: body.email },
   });
+
+  return NextResponse.json(uadatedUser);
 }
 
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const userData = [
-    { id: 1, name: "Jieun" },
-    { id: 2, name: "Hansol" },
-  ];
-
   const requestedId = parseInt(params.id);
 
-  const user = userData.find((user) => user.id === requestedId);
+  const user = await prisma.user.findUnique({
+    where: { id: requestedId },
+  });
 
   if (!user) {
     return NextResponse.json({ error: "USER NOT FOUND" }, { status: 404 });
   }
+
+  await prisma.user.delete({ where: { id: requestedId } });
 
   return NextResponse.json({});
 }

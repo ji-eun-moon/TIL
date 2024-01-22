@@ -1,24 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/prisma/client";
+import schema from "./schema";
 
-export function GET(request: NextRequest) {
-  return NextResponse.json([
-    { id: 1, name: "a" },
-    { id: 2, name: "b" },
-  ]);
+export async function GET(request: NextRequest) {
+  const users = await prisma.user.findMany();
+  return NextResponse.json(users);
 }
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
 
-  // 요청한 데이터가 존재하지 않는다면 404 에러 반환
-  if (!body.name) {
-    return NextResponse.json({ error: "Name is required" }, { status: 404 });
+  // 데이터 검증
+  const validation = schema.safeParse(body);
+  if (!validation.success) {
+    return NextResponse.json(validation.error.errors, { status: 404 });
   }
 
-  if (!body.id) {
-    return NextResponse.json({ error: "Id is required" }, { status: 404 });
+  const user = await prisma.user.findUnique({
+    where: { email: body.email },
+  });
+
+  if (user) {
+    return NextResponse.json({ error: "User already exists" }, { status: 400 });
   }
 
-  // 그렇지 않다면 전달 객체를 응답 객체로 반환
-  return NextResponse.json({ id: body.id, name: body.name });
+  // 새로운 사용자 생성
+  const newUser = await prisma.user.create({
+    data: {
+      name: body.name,
+      email: body.email,
+    },
+  });
+
+  return NextResponse.json(newUser);
 }
