@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Counter</title>
+    <!-- Redux 패키지 불러오기 -->
+    <script src="https://unpkg.com/redux@4.2.1/dist/redux.min.js"></script>
+  </head>
+  <body>
+    <!-- 화면에 나올 UI -->
+    <p>Counter: <span id="value">0</span></p>
+    <div>
+      <button id="increment">+</button>
+      <button id="decrement">-</button>
+    </div>
+
+    <script>
+      // 현재 state, action 객체를 받아 새로운 state를 반환하는 함수 - Reducer
+      function counter(state, action) {
+        if (typeof state === "undefined") {
+          return 0;
+        }
+
+        // action type 에 따라 다른 상태 반환
+        switch (action.type) {
+          case "INCREMENT":
+            return state + 1;
+          case "DECREMENT":
+            return state - 1;
+          default:
+            return state;
+        }
+      }
+
+      // Redux Store 생성
+      var store = Redux.createStore(counter);
+
+      // value 값을 가져옴
+      var valueElem = document.getElementById("value");
+
+      // Redux Store에 있는 count 값을 valueElement에 넣는 함수
+      function render() {
+        valueElem.innerHTML = store.getState().toString();
+      }
+      render();
+
+      // Redux Store의 State 변경될 때마다 render 함수 호출 (Redux Store 상태 구독)
+      store.subscribe(render);
+
+      // Redux Action을 Dispatch
+      // 버튼에 클릭 이벤트 리스너를 추가해주고, 액션 타입 정의
+      document
+        .getElementById("increment")
+        .addEventListener("click", function () {
+          store.dispatch({ type: "INCREMENT" });
+        });
+
+      document
+        .getElementById("decrement")
+        .addEventListener("click", function () {
+          store.dispatch({ type: "DECREMENT" });
+        });
+    </script>
+  </body>
+</html>
