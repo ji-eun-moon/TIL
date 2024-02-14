@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO - State Logging</title>
+    <!-- Redux 패키지 불러오기 -->
+    <script src="https://unpkg.com/redux@4.2.1/dist/redux.min.js"></script>
+  </head>
+  <body>
+    <!-- 화면에 나올 UI -->
+    <h3>오늘 할 일</h3>
+    <ul id="todo-list"></ul>
+
+    <div>
+      <input id="input-text" />
+      <button id="add-button">할 일 추가</button>
+      <!-- Logging State 버튼 -->
+      <button id="logging-state">State Logging</button>
+    </div>
+
+    <script>
+      // Reducer : 현재 state와 액션 객체를 받아 변경된 새로운 state 리턴
+      function todoReducer(state, action) {
+        switch (action.type) {
+          case "ADD_TODO": // 처리할 액션 타입
+            return state.concat(action.text);
+          default:
+            return state;
+        }
+      }
+
+      // store 생성, 초기 상태 값 설정
+      var store = Redux.createStore(todoReducer, ["처음 만난 리덕스 공부하기"]);
+
+      // Todo 목록 렌더링
+      var todoListElem = document.getElementById("todo-list");
+      var inputElem = document.getElementById("input-text");
+
+      function render() {
+        // 이전 TODO 목록 초기화
+        todoListElem.innerHTML = "";
+
+        // TODO 목록 렌더링
+        store.getState().forEach((todo) => {
+          const todoListItemElem = document.createElement("li");
+          todoListItemElem.textContent = todo;
+          todoListElem.appendChild(todoListItemElem);
+        });
+      }
+
+      render();
+      // store state 가 변경될 때마다 render 함수 호출
+      store.subscribe(render);
+
+      // add 버튼에 Click event listener 추가
+      document
+        .getElementById("add-button")
+        .addEventListener("click", function () {
+          // Action을 실제로 dispatch
+          store.dispatch({
+            type: "ADD_TODO",
+            text: inputElem.value,
+          });
+
+          // Input 초기화
+          inputElem.value = "";
+        });
+
+      // Logging State 버튼에 Click event listener 추가
+      document
+        .getElementById("logging-state")
+        // 현재 Redux State를 가져와 콘솔에 출력
+        .addEventListener("click", function () {
+          console.log("현재 state", store.getState());
+        });
+    </script>
+  </body>
+</html>

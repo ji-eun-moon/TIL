@@ -8,6 +8,7 @@
 | ------------ | -------------------------- | ------------------------ | --------------------------------------------------- |
 | 2024. 02. 04 | Redux 소개                 | [ch01](./ch01/README.md) | Flux Architecture, Three Principles of Redux        |
 | 2024. 02. 05 | Redux 구성요소와 동작 방식 | [ch02](./ch02/README.md) | Redux 구성요소와 동작 방식, Context API 와의 차이점 |
+| 2024. 02. 14 | Redux Store                | [ch03](./ch03/README.md) | Redux Store, Dispatcher                             |
 
 ## 링크
 
