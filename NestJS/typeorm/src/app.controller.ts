@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { UserModel } from './entity/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -21,7 +21,9 @@ export class AppController {
 
   @Post('users')
   postUser() {
-    return this.userRepository.save({});
+    return this.userRepository.save({
+      email: 'jieun@email.com',
+    });
   }
 
   @Get('users')
@@ -44,18 +46,26 @@ export class AppController {
     });
   }
 
+  @Delete('user/profile/:id')
+  async deleteProfile(@Param('id') id: string) {
+    await this.profileRepository.delete(+id);
+  }
+
   @Post('user/profile')
   async createUserAndProfile() {
     const user = await this.userRepository.save({
       email: 'asdf@jieun.com',
+      profile: {
+        profileImg: 'asdf.jpg',
+      },
     });
 
-    const profile = await this.profileRepository.save({
-      profileImg: 'asdf.jpg',
-      user,
-    });
+    // const profile = await this.profileRepository.save({
+    //   profileImg: 'asdf.jpg',
+    //   user,
+    // });
 
-    return profile;
+    return user;
   }
 
   @Post('user/post')
