@@ -1,27 +1,24 @@
 import {
   Column,
   Entity,
-  JoinTable,
   ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UserModel } from './user.entity';
-import { TagModel } from './tag.entity';
+import { PostModel } from './post.entity';
 
 @Entity()
-export class PostModel {
+export class TagModel {
   @PrimaryGeneratedColumn()
   id: number;
 
-  // 무조건 Many To One 에서 join id 를 가지고 있음
   @ManyToOne(() => UserModel, (user) => user.posts)
   author: UserModel;
 
-  @Column()
-  title: string;
+  @ManyToMany(() => PostModel, (post) => post.tags)
+  posts: TagModel[];
 
-  @ManyToMany(() => TagModel, (tag) => tag.posts)
-  @JoinTable()
-  tags: TagModel[];
+  @Column()
+  name: string;
 }
