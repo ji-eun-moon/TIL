@@ -29,10 +29,49 @@ export class AppController {
   @Get('users')
   getUsers() {
     return this.userRepository.find({
+      // 가져오고 싶은 관계
       relations: {
         profile: true,
         posts: true,
       },
+      // 어떤 프로퍼티를 선택할 지 - 기본 값은 모든 프로퍼티
+      // select를 정의하면 정의된 프로퍼티만 가져온다.
+      select: {
+        id: true,
+        createdAt: true,
+        updatedAt: true,
+        version: true,
+        // profile 에서 id 만 가져오고 싶은 경우
+        profile: {
+          id: true,
+        },
+      },
+      // 필터링 조건 입력 - and 조건
+      where: {
+        version: 1,
+        // profile 의 id 가 3인 경우
+        // profile: {
+        //   id: 3,
+        // },
+      },
+      // 리스트로 적으면 or 조건
+      // where: [
+      //   {
+      //     version: 1,
+      //   },
+      //   {
+      //     version: 2,
+      //   },
+      // ],
+      // 정렬 - 오름차순(ASC), 내림차순(DESC)
+      order: {
+        // id를 오름차순으로 정렬
+        id: 'ASC',
+      },
+      // 처음 몇 개를 제외할지
+      skip: 0,
+      // 몇 개를 가져올지 - 기본값 전체(0)
+      take: 1,
     });
   }
 

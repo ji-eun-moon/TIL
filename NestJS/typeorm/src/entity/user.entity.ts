@@ -70,7 +70,7 @@ export class UserModel {
 
   @OneToOne(() => ProfileModel, (profile) => profile.user, {
     // find() 실행할 때마다 항상 같이 가져올 relation - 기본값 false
-    eager: true,
+    eager: false,
     // 저장할 때 relation을 한번에 같이 저장 가능 - 기본값 false
     cascade: true,
     // null 가능 여부 - 기본값 false
