@@ -22,8 +22,8 @@ export enum Role {
 @Entity()
 export class UserModel {
   @PrimaryColumn() // 테이블 안에서 각각의 row를 구분할 수 있는 컬럼 -> 반드시 존재해야 한다.
-  @PrimaryGeneratedColumn('uuid') // 자동으로 id를 생성 - uuid를 인자로 넣어주면, 자동으로 uuid 값을 키로 생성한다.
-  id: string;
+  @PrimaryGeneratedColumn() // 자동으로 id를 생성 - uuid를 인자로 넣어주면, 자동으로 uuid 값을 키로 생성한다.
+  id: number;
 
   @Column()
   email: string;

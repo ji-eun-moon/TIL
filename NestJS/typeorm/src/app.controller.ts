@@ -1,5 +1,17 @@
 import { Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import {
+  // Between,
+  // Equal,
+  // ILike,
+  // In,
+  // IsNull,
+  // LessThan,
+  // LessThanOrEqual,
+  // Like,
+  // MoreThanOrEqual,
+  Not,
+  Repository,
+} from 'typeorm';
 import { UserModel } from './entity/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProfileModel } from './entity/profile.entity';
@@ -20,65 +32,49 @@ export class AppController {
   ) {}
 
   @Post('users')
-  postUser() {
+  async postUser() {
     return this.userRepository.save({
       email: 'jieun@email.com',
     });
+    // for (let i = 0; i < 100; i++) {
+    //   await this.userRepository.save({
+    //     email: `user-${i}@google.com`,
+    //   });
+    // }
   }
 
   @Get('users')
   getUsers() {
     return this.userRepository.find({
-      // 가져오고 싶은 관계
-      relations: {
-        profile: true,
-        posts: true,
-      },
-      // 어떤 프로퍼티를 선택할 지 - 기본 값은 모든 프로퍼티
-      // select를 정의하면 정의된 프로퍼티만 가져온다.
-      select: {
-        id: true,
-        createdAt: true,
-        updatedAt: true,
-        version: true,
-        // profile 에서 id 만 가져오고 싶은 경우
-        profile: {
-          id: true,
-        },
-      },
-      // 필터링 조건 입력 - and 조건
       where: {
-        version: 1,
-        // profile 의 id 가 3인 경우
-        // profile: {
-        //   id: 3,
-        // },
+        // id가 1이 아닌 경우만 가져오기
+        id: Not(1),
+        // // id가 30보다 작은 경우만 가져오기
+        // id: LessThan(30),
+        // // id 가 30보다 적거나 같은경우만 가져오기
+        // id: LessThanOrEqual(30),
+        // // id가 30보다 크거나 같은경우만 가져오기
+        // id: MoreThanOrEqual(30),
+        // // id가 30인 경우
+        // id: Equal(30),
+        // // 유사값
+        // email: Like('%google%'),
+        // // 대문자 소문자 구분 안하는 유사값
+        // email: ILike('%google%'),
+        // // 사이값
+        // id: Between(10, 15),
+        // // 해당되는 여러 개의 값
+        // id: In([1, 3, 5, 7, 99]),
+        // // id가 Null 인 경우
+        // id: IsNull()
       },
-      // 리스트로 적으면 or 조건
-      // where: [
-      //   {
-      //     version: 1,
-      //   },
-      //   {
-      //     version: 2,
-      //   },
-      // ],
-      // 정렬 - 오름차순(ASC), 내림차순(DESC)
-      order: {
-        // id를 오름차순으로 정렬
-        id: 'ASC',
-      },
-      // 처음 몇 개를 제외할지
-      skip: 0,
-      // 몇 개를 가져올지 - 기본값 전체(0)
-      take: 1,
     });
   }
 
   @Patch('users/:id')
   async patchUser(@Param('id') id: string) {
     const user = await this.userRepository.findOne({
-      where: { id },
+      where: { id: +id },
     });
     return this.userRepository.save({
       ...user,
