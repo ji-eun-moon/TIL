@@ -1,0 +1,6 @@
+<input
+  #inputRef
+  class="w-full"
+  [ngModel]="value()"
+  (ngModelChange)="value.set($event)"
+/>
