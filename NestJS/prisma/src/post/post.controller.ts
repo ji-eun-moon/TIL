@@ -24,8 +24,19 @@ import { User } from '@prisma/client';
 
 @ApiTags('Post')
 @Controller('post')
-export class VocController {
+export class PostController {
   constructor(private readonly postService: PostService) {}
+
+  @Get()
+  @ApiOperation({
+    summary: '게시글 전체 조회',
+    description: '게시글전체를 조회합니다.',
+  })
+  @ApiOkResponse({ type: PostDTO, isArray: true })
+  async findAll() {
+    const voc = await this.postService.findAll();
+    return plainToInstance(PostDTO, voc);
+  }
 
   @Get('search')
   @ApiOperation({
@@ -58,8 +69,8 @@ export class VocController {
 
   @Get(':id')
   @ApiOperation({
-    summary: '오류 제보 조회',
-    description: '오류 제보를 조회합니다.',
+    summary: '게시글 조회',
+    description: '게시글을 조회합니다.',
   })
   @ApiOkResponse({ type: PostDTO })
   async findById(@Param('id') id: string) {
@@ -70,8 +81,8 @@ export class VocController {
 
   @Post()
   @ApiOperation({
-    summary: '오류 제보 등록',
-    description: '오류 제보를 등록합니다.',
+    summary: '게시글 등록',
+    description: '게시글을 등록합니다.',
   })
   @Anonymous()
   @ApiOkResponse({ type: PostDTO })

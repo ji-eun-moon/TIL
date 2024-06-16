@@ -8,6 +8,10 @@ import { CreatePostDTO } from './dto/create-post.dto';
 export class PostService {
   constructor(private readonly prismaService: PrismaService) {}
 
+  findAll() {
+    return this.prismaService.post.findMany();
+  }
+
   findById(id: string) {
     return this.prismaService.post.findUnique({
       where: { id },
